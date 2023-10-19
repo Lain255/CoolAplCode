@@ -1,0 +1,24 @@
+⍝ This algorithm is based on a balancing puzzle https://en.wikipedia.org/wiki/Balance_puzzle 
+⍝ There are 3^n coins of the same weight except for 1 that is heavier. 
+⍝ You have access to a scale that can weigh 1 group of coins against another.
+⍝ this algorithm finds the heavy coin in only n weighings
+
+CreateCoins ← {(⍵/3)⍴1+(?=⍳)3*⍵}
+⍝ CreateCoins makes a data structure of size 3^n that fulfills the conditions of the problem.
+⍝ 3*⍵ gives 3^n
+⍝ (?=⍳) gives a list of 3^n 0s with a 1 at a random index
+⍝ (⍵/3)⍴ partitions the list into a 3^n dimentioned array 
+
+FindCoin ← 3⊥{0=≡⍵:⍬⋄(-∘1,(∇⌷)∘⍵)2+⊃(⌽-⊢)+/⍪⍵}
+⍝ FindCoin takes the data structure created by CreateCoins and returns the index of the heavy coin
+⍝ {0=≡⍵:⍬⋄(-∘1,(∇⌷)∘⍵)2+⊃(⌽-⊢)+/⍪⍵} this gives a indexed path through the 3^n matrix to the heavy coin
+⍝ 3⊥ takes the indexed path and turns it into a index with the radix operator
+⍝ ⍪⍵ turns the 3^n dimentioned array into a 2d table with 3 rows.
+⍝ +/⍪⍵ gives the sum of each row
+⍝ ⊃(⌽-⊢) does the weighing. it takes the sum of each row, subtracts it by the reverse, then takes the first element.
+⍝ This results in weight(3rd third) - weight(1st third)
+⍝ (-∘1,(∇⌷)∘⍵) this recursivly appends indexes to create a list of indexes
+
+A ← CreateCoins 3
+A
+FindCoin A
