@@ -1,0 +1,9 @@
+FizzBuzz ← {⍵{0=⍴⍵:⍺ ⋄ ⊃,/⍵}('fizz' 'buzz')[⍸~×(3 5)|⍵]}
+⍝ ~×(3 5)|⍵ gives a boolean list for if ⍵ is divisiable by (3 5)
+⍝ ⍸~×(3 5)|⍵ gives the indices of which number divides ⍵ in (3 5)
+⍝ ('fizz' 'buzz')[⍸~×(3 5)|⍵] gives (), (fizz), (buzz), or (fizz,buzz) 
+⍝ ⍵{0=⍴⍵:⍺ ⋄ ⊃,/⍵} turns (), (fizz), (buzz), or (fizz,buzz) into appropriate outputs for the FizzBuzz function
+
+FizzBuzz¨⍪⍳20
+⍝ ⍪⍳20 gives a table from 1 to 20
+⍝ FizzBuzz¨ applies FizzBuzz to each row in the table
