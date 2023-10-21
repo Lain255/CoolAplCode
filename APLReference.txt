@@ -37,6 +37,23 @@ If the tacit expression ends on an even function, that function will be applied 
 
 Dfns
 These are lambda functions you write between {}
-⍵ is the right argument, ⍺ is the left argument, ∇ refers to the funtion itself to allow for recursion.
+⍵ is the right argument, ⍺ is the left argument, ∇ refers to the function itself to allow for recursion.
 Dfns allows for if-else statments with this syntax {boolean expression : true ⋄ false}
+
+Common functional patterns
+Pattern  = Tacit           = operator
+X f (gY) = X (⊢ f (g⊣)) Y = X f∘g Y
+Y f (gX) = X (⊣ f (g⊢)) Y = X f∘g⍨ Y
+(gY) f X = X ((g⊣) f ⊢) Y = X f⍨∘g Y
+(gX) f Y = X ((g⊣) f ⊣) Y = X f⍨∘g⍨ Y
+
+X f (gX) = (⊢fg) X        = f∘g⍨ X
+(gX) f X = (gf⊢) X        = f⍨∘g⍨ X
+
+
+
+
+
+
+
 
