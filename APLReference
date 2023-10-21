@@ -1,0 +1,42 @@
+naming conventions
+Arrays are capital XYZW
+functions are lowercase fgh
+operators are circles ∘⍤⍥
+
+Every value is an array
+Functions can take 1 or 2 arrays and will always return 1 array
+
+Reminder that functions have long right scope and short left scope 
+fXgYhZ = Wf(Xg(YhZ))
+while operators have long left scope and short right scope
+f∘g⍤h⍥i = ((f∘g)⍤h)⍥i
+
+Common operators and equevilent expressions
+Operator   = Tacit      = Readable    = Readable Shortened
+X f∘g Y    = (Xfg) Y    = X f (gY)    = XfgY
+X f⍤g Y   = X (fg) Y   = f (XgY)     = fXgY
+X f⍥g Y  = X (gfg) Y  = (gX) f (gY) = (gX)fgY
+
+f∘g X = f⍤g X = f⍥g X = (fg) X = f (gX) = fgX
+
+f⍨ X = X f X
+X f⍨ Y = Y f X
+
+Tacit expressions
+(Zgh) X = Z    g (hX)
+(fgh) X = (fX) g (hX)
+
+X (Zgh) Y = Z     g (XhY)
+X (fgh) Y = (XfY) g (XhY)
+
+In general tacit expressions will, starting from the left, 
+1. apply to arguments on odd functions
+2. combine the results with even binary funtions
+You may replace any odd function that is not the left most function with an array
+If the tacit expression ends on an even function, that function will be applied unarily
+
+Dfns
+These are lambda functions you write between {}
+⍵ is the right argument, ⍺ is the left argument, ∇ refers to the funtion itself to allow for recursion.
+Dfns allows for if-else statments with this syntax {boolean expression : true ⋄ false}
+
